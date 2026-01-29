@@ -1,0 +1,56 @@
+{
+    "TFIELDS": {
+        "summary": "Defines the fields of a new table",
+        "complexity": "1",
+        "group": "table",
+        "since": "10.0.0",
+        "arity": -3,
+        "function": "tfieldsCommand",
+        "command_flags": [
+            "WRITE",
+            "DENYOOM",
+            "FAST"
+        ],
+        "acl_categories": [
+            "FAST",
+            "LIST",
+            "WRITE"
+        ],
+        "key_specs": [
+            {
+                "flags": [
+                    "RW",
+                    "INSERT"
+                ],
+                "begin_search": {
+                    "index": {
+                        "pos": 1
+                    }
+                },
+                "find_keys": {
+                    "range": {
+                        "lastkey": 0,
+                        "step": 1,
+                        "limit": 0
+                    }
+                }
+            }
+        ],
+        "reply_schema": {
+            "description": "TBD",
+            "type": "integer"
+        },
+        "arguments": [
+            {
+                "name": "key",
+                "type": "key",
+                "key_spec_index": 0
+            },
+            {
+                "name": "field",
+                "type": "string",
+                "multiple": true
+            }
+        ]
+    }
+}

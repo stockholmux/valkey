@@ -83,6 +83,7 @@ set(VALKEY_SERVER_SRCS
     ${CMAKE_SOURCE_DIR}/src/siphash.c
     ${CMAKE_SOURCE_DIR}/src/rax.c
     ${CMAKE_SOURCE_DIR}/src/t_stream.c
+    ${CMAKE_SOURCE_DIR}/src/t_table.c
     ${CMAKE_SOURCE_DIR}/src/listpack.c
     ${CMAKE_SOURCE_DIR}/src/localtime.c
     ${CMAKE_SOURCE_DIR}/src/lolwut.c

@@ -1,0 +1,58 @@
+{
+    "TGETFIELDSBIT": {
+        "summary": "Returns the fields of a key",
+        "complexity": "O(1)",
+        "group": "table",
+        "since": "10.0.0",
+        "arity": 3,
+        "function": "tgetfieldsbitsCommand",
+        "command_flags": [
+            "READONLY",
+            "FAST"
+        ],
+        "acl_categories": [
+            "FAST",
+            "KEYSPACE",
+            "READ"
+        ],
+        "command_tips": [ ],
+        "key_specs": [
+            {
+                "flags": [
+                    "RO",
+                    "ACCESS"
+                ],
+                "begin_search": {
+                    "index": {
+                        "pos": 1
+                    }
+                },
+                "find_keys": {
+                    "range": {
+                        "lastkey": 0,
+                        "step": 1,
+                        "limit": 0
+                    }
+                }
+            }
+        ],
+        "reply_schema": {
+            "description": "List of fields in the table",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "arguments": [
+            {
+                "name": "key",
+                "type": "key",
+                "key_spec_index": 0
+            },
+            {
+                "name" : "fieldbitmap",
+                "type" : "integer"
+            }
+        ]
+    }
+}

@@ -80,6 +80,7 @@
 #include "connection.h" /* Connection abstraction */
 #include "memory_prefetch.h"
 #include "vset.h"
+#include "table.h"
 #include "trace/trace.h"
 #include "entry.h"
 #include "lrulfu.h"
@@ -780,7 +781,8 @@ typedef enum {
  * encoding version. */
 #define OBJ_MODULE 5   /* Module object. */
 #define OBJ_STREAM 6   /* Stream object. */
-#define OBJ_TYPE_MAX 7 /* Maximum number of object types */
+#define OBJ_TABLE 7    /* Table object. */
+#define OBJ_TYPE_MAX 8 /* Maximum number of object types */
 
 typedef struct ValkeyModuleType moduleType;
 
@@ -802,6 +804,7 @@ typedef struct ValkeyModuleType moduleType;
 #define OBJ_ENCODING_QUICKLIST 9  /* Encoded as linked list of listpacks */
 #define OBJ_ENCODING_STREAM 10    /* Encoded as a radix tree of listpacks */
 #define OBJ_ENCODING_LISTPACK 11  /* Encoded as a listpack */
+#define OBJ_ENCODING_TABLE 12     /* Encoded as a table */
 
 #define OBJ_REFCOUNT_BITS 29
 #define OBJ_SHARED_REFCOUNT ((1 << OBJ_REFCOUNT_BITS) - 1) /* Global object never destroyed. */
@@ -2521,6 +2524,7 @@ typedef enum {
     COMMAND_GROUP_STREAM,
     COMMAND_GROUP_BITMAP,
     COMMAND_GROUP_MODULE,
+    COMMAND_GROUP_TABLE,
 } serverCommandGroup;
 
 typedef void serverCommandProc(client *c);
@@ -3102,6 +3106,7 @@ robj *createHashObject(void);
 robj *createZsetObject(void);
 robj *createZsetListpackObject(void);
 robj *createStreamObject(void);
+robj *createTableObject(void);
 robj *createModuleObject(moduleType *mt, void *value);
 int getLongFromObjectOrReply(client *c, robj *o, long *target, const char *msg);
 int getPositiveLongFromObjectOrReply(client *c, robj *o, long *target, const char *msg);
@@ -4113,6 +4118,12 @@ void pfdebugCommand(client *c);
 void latencyCommand(client *c);
 void moduleCommand(client *c);
 void securityWarningCommand(client *c);
+void tfieldsCommand(client *c);
+void tgetfieldsCommand(client *c);
+void tappendCommand(client *c);
+void tappendbitCommand(client *c);
+void tgetfieldsbitsCommand(client *c);
+void trowCommand(client *c);
 void xaddCommand(client *c);
 void xrangeCommand(client *c);
 void xrevrangeCommand(client *c);

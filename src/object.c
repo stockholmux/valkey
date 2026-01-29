@@ -538,6 +538,18 @@ robj *createZsetListpackObject(void) {
     return o;
 }
 
+robj *createTableObject(void) {
+    table *s = tableNew();
+    robj *o = createObject(OBJ_TABLE, s);
+    o->encoding = OBJ_ENCODING_TABLE;
+    return o;
+}
+
+void freeTableObject(robj *o) {
+    freeTable(objectGetVal(o));
+}
+
+
 robj *createStreamObject(void) {
     stream *s = streamNew();
     robj *o = createObject(OBJ_STREAM, s);
@@ -635,6 +647,7 @@ void decrRefCount(robj *o) {
             case OBJ_HASH: freeHashObject(o); break;
             case OBJ_MODULE: freeModuleObject(o); break;
             case OBJ_STREAM: freeStreamObject(o); break;
+            case OBJ_TABLE: freeTableObject(o); break;
             default: serverPanic("Unknown object type"); break;
             }
         }
@@ -1179,6 +1192,7 @@ char *strEncoding(int encoding) {
     case OBJ_ENCODING_SKIPLIST: return "skiplist";
     case OBJ_ENCODING_EMBSTR: return "embstr";
     case OBJ_ENCODING_STREAM: return "stream";
+    case OBJ_ENCODING_TABLE: return "table";
     default: return "unknown";
     }
 }

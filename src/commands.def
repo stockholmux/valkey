@@ -11668,6 +11668,170 @@ struct COMMAND_ARG SUBSTR_Args[] = {
 {MAKE_ARG("end",ARG_TYPE_INTEGER,-1,NULL,NULL,NULL,CMD_ARG_NONE,0,NULL)},
 };
 
+/********** TAPPEND ********************/
+
+#ifndef SKIP_CMD_HISTORY_TABLE
+/* TAPPEND history */
+#define TAPPEND_History NULL
+#endif
+
+#ifndef SKIP_CMD_TIPS_TABLE
+/* TAPPEND tips */
+#define TAPPEND_Tips NULL
+#endif
+
+#ifndef SKIP_CMD_KEY_SPECS_TABLE
+/* TAPPEND key specs */
+keySpec TAPPEND_Keyspecs[1] = {
+{NULL,CMD_KEY_RW|CMD_KEY_UPDATE,KSPEC_BS_INDEX,.bs.index={1},KSPEC_FK_RANGE,.fk.range={0,1,0}}
+};
+#endif
+
+/* TAPPEND data argument table */
+struct COMMAND_ARG TAPPEND_data_Subargs[] = {
+{MAKE_ARG("field",ARG_TYPE_STRING,-1,NULL,NULL,NULL,CMD_ARG_NONE,0,NULL)},
+{MAKE_ARG("value",ARG_TYPE_STRING,-1,NULL,NULL,NULL,CMD_ARG_NONE,0,NULL)},
+};
+
+/* TAPPEND argument table */
+struct COMMAND_ARG TAPPEND_Args[] = {
+{MAKE_ARG("key",ARG_TYPE_KEY,0,NULL,NULL,NULL,CMD_ARG_NONE,0,NULL)},
+{MAKE_ARG("seconds",ARG_TYPE_INTEGER,-1,NULL,NULL,NULL,CMD_ARG_NONE,0,NULL)},
+{MAKE_ARG("data",ARG_TYPE_BLOCK,-1,NULL,NULL,NULL,CMD_ARG_MULTIPLE,2,NULL),.subargs=TAPPEND_data_Subargs},
+};
+
+/********** TAPPENDBIT ********************/
+
+#ifndef SKIP_CMD_HISTORY_TABLE
+/* TAPPENDBIT history */
+#define TAPPENDBIT_History NULL
+#endif
+
+#ifndef SKIP_CMD_TIPS_TABLE
+/* TAPPENDBIT tips */
+#define TAPPENDBIT_Tips NULL
+#endif
+
+#ifndef SKIP_CMD_KEY_SPECS_TABLE
+/* TAPPENDBIT key specs */
+keySpec TAPPENDBIT_Keyspecs[1] = {
+{NULL,CMD_KEY_RW|CMD_KEY_UPDATE,KSPEC_BS_INDEX,.bs.index={1},KSPEC_FK_RANGE,.fk.range={0,1,0}}
+};
+#endif
+
+/* TAPPENDBIT data argument table */
+struct COMMAND_ARG TAPPENDBIT_data_Subargs[] = {
+{MAKE_ARG("field",ARG_TYPE_STRING,-1,NULL,NULL,NULL,CMD_ARG_NONE,0,NULL)},
+{MAKE_ARG("value",ARG_TYPE_STRING,-1,NULL,NULL,NULL,CMD_ARG_NONE,0,NULL)},
+};
+
+/* TAPPENDBIT argument table */
+struct COMMAND_ARG TAPPENDBIT_Args[] = {
+{MAKE_ARG("key",ARG_TYPE_KEY,0,NULL,NULL,NULL,CMD_ARG_NONE,0,NULL)},
+{MAKE_ARG("seconds",ARG_TYPE_INTEGER,-1,NULL,NULL,NULL,CMD_ARG_NONE,0,NULL)},
+{MAKE_ARG("fieldbitmap",ARG_TYPE_INTEGER,-1,NULL,NULL,NULL,CMD_ARG_NONE,0,NULL)},
+{MAKE_ARG("data",ARG_TYPE_BLOCK,-1,NULL,NULL,NULL,CMD_ARG_MULTIPLE,2,NULL),.subargs=TAPPENDBIT_data_Subargs},
+};
+
+/********** TFIELDS ********************/
+
+#ifndef SKIP_CMD_HISTORY_TABLE
+/* TFIELDS history */
+#define TFIELDS_History NULL
+#endif
+
+#ifndef SKIP_CMD_TIPS_TABLE
+/* TFIELDS tips */
+#define TFIELDS_Tips NULL
+#endif
+
+#ifndef SKIP_CMD_KEY_SPECS_TABLE
+/* TFIELDS key specs */
+keySpec TFIELDS_Keyspecs[1] = {
+{NULL,CMD_KEY_RW|CMD_KEY_INSERT,KSPEC_BS_INDEX,.bs.index={1},KSPEC_FK_RANGE,.fk.range={0,1,0}}
+};
+#endif
+
+/* TFIELDS argument table */
+struct COMMAND_ARG TFIELDS_Args[] = {
+{MAKE_ARG("key",ARG_TYPE_KEY,0,NULL,NULL,NULL,CMD_ARG_NONE,0,NULL)},
+{MAKE_ARG("field",ARG_TYPE_STRING,-1,NULL,NULL,NULL,CMD_ARG_MULTIPLE,0,NULL)},
+};
+
+/********** TGETFIELDS ********************/
+
+#ifndef SKIP_CMD_HISTORY_TABLE
+/* TGETFIELDS history */
+#define TGETFIELDS_History NULL
+#endif
+
+#ifndef SKIP_CMD_TIPS_TABLE
+/* TGETFIELDS tips */
+#define TGETFIELDS_Tips NULL
+#endif
+
+#ifndef SKIP_CMD_KEY_SPECS_TABLE
+/* TGETFIELDS key specs */
+keySpec TGETFIELDS_Keyspecs[1] = {
+{NULL,CMD_KEY_RO|CMD_KEY_ACCESS,KSPEC_BS_INDEX,.bs.index={1},KSPEC_FK_RANGE,.fk.range={0,1,0}}
+};
+#endif
+
+/* TGETFIELDS argument table */
+struct COMMAND_ARG TGETFIELDS_Args[] = {
+{MAKE_ARG("key",ARG_TYPE_KEY,0,NULL,NULL,NULL,CMD_ARG_NONE,0,NULL)},
+};
+
+/********** TGETFIELDSBIT ********************/
+
+#ifndef SKIP_CMD_HISTORY_TABLE
+/* TGETFIELDSBIT history */
+#define TGETFIELDSBIT_History NULL
+#endif
+
+#ifndef SKIP_CMD_TIPS_TABLE
+/* TGETFIELDSBIT tips */
+#define TGETFIELDSBIT_Tips NULL
+#endif
+
+#ifndef SKIP_CMD_KEY_SPECS_TABLE
+/* TGETFIELDSBIT key specs */
+keySpec TGETFIELDSBIT_Keyspecs[1] = {
+{NULL,CMD_KEY_RO|CMD_KEY_ACCESS,KSPEC_BS_INDEX,.bs.index={1},KSPEC_FK_RANGE,.fk.range={0,1,0}}
+};
+#endif
+
+/* TGETFIELDSBIT argument table */
+struct COMMAND_ARG TGETFIELDSBIT_Args[] = {
+{MAKE_ARG("key",ARG_TYPE_KEY,0,NULL,NULL,NULL,CMD_ARG_NONE,0,NULL)},
+{MAKE_ARG("fieldbitmap",ARG_TYPE_INTEGER,-1,NULL,NULL,NULL,CMD_ARG_NONE,0,NULL)},
+};
+
+/********** TROW ********************/
+
+#ifndef SKIP_CMD_HISTORY_TABLE
+/* TROW history */
+#define TROW_History NULL
+#endif
+
+#ifndef SKIP_CMD_TIPS_TABLE
+/* TROW tips */
+#define TROW_Tips NULL
+#endif
+
+#ifndef SKIP_CMD_KEY_SPECS_TABLE
+/* TROW key specs */
+keySpec TROW_Keyspecs[1] = {
+{NULL,CMD_KEY_RO|CMD_KEY_ACCESS,KSPEC_BS_INDEX,.bs.index={1},KSPEC_FK_RANGE,.fk.range={0,1,0}}
+};
+#endif
+
+/* TROW argument table */
+struct COMMAND_ARG TROW_Args[] = {
+{MAKE_ARG("key",ARG_TYPE_KEY,0,NULL,NULL,NULL,CMD_ARG_NONE,0,NULL)},
+{MAKE_ARG("index",ARG_TYPE_INTEGER,-1,NULL,NULL,NULL,CMD_ARG_NONE,0,NULL)},
+};
+
 /********** DISCARD ********************/
 
 #ifndef SKIP_CMD_HISTORY_TABLE
@@ -12029,6 +12193,13 @@ struct COMMAND_STRUCT serverCommandTable[] = {
 {MAKE_CMD("setrange","Overwrites a part of a string value with another by an offset. Creates the key if it doesn't exist.","O(1), not counting the time taken to copy the new string in place. Usually, this string is very small so the amortized complexity is O(1). Otherwise, complexity is O(M) with M being the length of the value argument.","2.2.0",CMD_DOC_NONE,NULL,NULL,"string",COMMAND_GROUP_STRING,SETRANGE_History,0,SETRANGE_Tips,0,setrangeCommand,4,CMD_WRITE|CMD_DENYOOM,ACL_CATEGORY_SLOW|ACL_CATEGORY_STRING|ACL_CATEGORY_WRITE,NULL,SETRANGE_Keyspecs,1,NULL,3),.args=SETRANGE_Args},
 {MAKE_CMD("strlen","Returns the length of a string value.","O(1)","2.2.0",CMD_DOC_NONE,NULL,NULL,"string",COMMAND_GROUP_STRING,STRLEN_History,0,STRLEN_Tips,0,strlenCommand,2,CMD_READONLY|CMD_FAST,ACL_CATEGORY_FAST|ACL_CATEGORY_READ|ACL_CATEGORY_STRING,NULL,STRLEN_Keyspecs,1,NULL,1),.args=STRLEN_Args},
 {MAKE_CMD("substr","Returns a substring from a string value.","O(N) where N is the length of the returned string. The complexity is ultimately determined by the returned length, but because creating a substring from an existing string is very cheap, it can be considered O(1) for small strings.","1.0.0",CMD_DOC_NONE,NULL,NULL,"string",COMMAND_GROUP_STRING,SUBSTR_History,0,SUBSTR_Tips,0,getrangeCommand,4,CMD_READONLY,ACL_CATEGORY_READ|ACL_CATEGORY_SLOW|ACL_CATEGORY_STRING,NULL,SUBSTR_Keyspecs,1,NULL,3),.args=SUBSTR_Args},
+/* table */
+{MAKE_CMD("tappend","Appends a row to a table.","pairs.","10.0.0",CMD_DOC_NONE,NULL,NULL,"table",COMMAND_GROUP_TABLE,TAPPEND_History,0,TAPPEND_Tips,0,tappendCommand,-4,CMD_WRITE|CMD_DENYOOM|CMD_FAST,ACL_CATEGORY_FAST|ACL_CATEGORY_HASH|ACL_CATEGORY_WRITE,NULL,TAPPEND_Keyspecs,1,NULL,3),.args=TAPPEND_Args},
+{MAKE_CMD("tappendbit","Appends a row to a table.","pairs.","10.0.0",CMD_DOC_NONE,NULL,NULL,"table",COMMAND_GROUP_TABLE,TAPPENDBIT_History,0,TAPPENDBIT_Tips,0,tappendbitCommand,-4,CMD_WRITE|CMD_DENYOOM|CMD_FAST,ACL_CATEGORY_FAST|ACL_CATEGORY_HASH|ACL_CATEGORY_WRITE,NULL,TAPPENDBIT_Keyspecs,1,NULL,4),.args=TAPPENDBIT_Args},
+{MAKE_CMD("tfields","Defines the fields of a new table","1","10.0.0",CMD_DOC_NONE,NULL,NULL,"table",COMMAND_GROUP_TABLE,TFIELDS_History,0,TFIELDS_Tips,0,tfieldsCommand,-3,CMD_WRITE|CMD_DENYOOM|CMD_FAST,ACL_CATEGORY_FAST|ACL_CATEGORY_LIST|ACL_CATEGORY_WRITE,NULL,TFIELDS_Keyspecs,1,NULL,2),.args=TFIELDS_Args},
+{MAKE_CMD("tgetfields","Returns the fields of a key","O(1)","10.0.0",CMD_DOC_NONE,NULL,NULL,"table",COMMAND_GROUP_TABLE,TGETFIELDS_History,0,TGETFIELDS_Tips,0,tgetfieldsCommand,2,CMD_READONLY|CMD_FAST,ACL_CATEGORY_FAST|ACL_CATEGORY_KEYSPACE|ACL_CATEGORY_READ,NULL,TGETFIELDS_Keyspecs,1,NULL,1),.args=TGETFIELDS_Args},
+{MAKE_CMD("tgetfieldsbit","Returns the fields of a key","O(1)","10.0.0",CMD_DOC_NONE,NULL,NULL,"table",COMMAND_GROUP_TABLE,TGETFIELDSBIT_History,0,TGETFIELDSBIT_Tips,0,tgetfieldsbitsCommand,3,CMD_READONLY|CMD_FAST,ACL_CATEGORY_FAST|ACL_CATEGORY_KEYSPACE|ACL_CATEGORY_READ,NULL,TGETFIELDSBIT_Keyspecs,1,NULL,2),.args=TGETFIELDSBIT_Args},
+{MAKE_CMD("trow","Returns a table row","tbd","10.0.0",CMD_DOC_NONE,NULL,NULL,"table",COMMAND_GROUP_TABLE,TROW_History,0,TROW_Tips,0,trowCommand,3,CMD_READONLY,ACL_CATEGORY_LIST|ACL_CATEGORY_READ|ACL_CATEGORY_SLOW,NULL,TROW_Keyspecs,1,NULL,2),.args=TROW_Args},
 /* transactions */
 {MAKE_CMD("discard","Discards a transaction.","O(N), when N is the number of queued commands","2.0.0",CMD_DOC_NONE,NULL,NULL,"transactions",COMMAND_GROUP_TRANSACTIONS,DISCARD_History,0,DISCARD_Tips,0,discardCommand,1,CMD_NOSCRIPT|CMD_LOADING|CMD_STALE|CMD_FAST|CMD_ALLOW_BUSY,ACL_CATEGORY_FAST|ACL_CATEGORY_TRANSACTION,NULL,DISCARD_Keyspecs,0,NULL,0)},
 {MAKE_CMD("exec","Executes all commands in a transaction.","Depends on commands in the transaction","1.2.0",CMD_DOC_NONE,NULL,NULL,"transactions",COMMAND_GROUP_TRANSACTIONS,EXEC_History,0,EXEC_Tips,0,execCommand,1,CMD_NOSCRIPT|CMD_LOADING|CMD_STALE|CMD_SKIP_COMMANDLOG,ACL_CATEGORY_SLOW|ACL_CATEGORY_TRANSACTION,NULL,EXEC_Keyspecs,0,NULL,0)},
